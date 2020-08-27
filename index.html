@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta name="viewport" content="width=device-width,initial-scale=1.0" />
+        <meta charset="utf-8" />
+        <title>admin</title>
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/element-ui@2.13.1/lib/theme-chalk/index.css">
+		<link rel="stylesheet" href="./css/style.css">
+	</head>
+    <body>
+<div id="app">
+    <template>
+        <el-header style="padding-bottom:0px"
+			height="50px"
+            class="hg-header"
+            default-active="2"
+            mode="horizontal"
+            >
+			<el-row style="line-height: 0px;">
+				<el-col :span="4"><div style="line-height: 10px;"> <img :src="logo" style="height: 3.125rem;" alt=""></div></el-input>
+</el-col>
+				<el-col :span="2"><div @click="collapseStatus" style="line-height: 50px;" class="grid-content bg-purple-dark" ><i class="el-icon-view"></i></div></el-col>
+				<el-col :span="14"><div style="line-height: 10px;" class="grid-content bg-purple-dark" ><span style="font-size: 12px;color: #FFAC38; line-height: 50px;">{{welcome}}</span></div></el-col>
+				<el-col :span="1" :offset="3" >
+					<div  class="demo-type" style="line-height: 10px; margin-top: 5px;">
+						<el-dropdown>
+							<el-avatar class="el-dropdown-link" src="https://cube.elemecdn.com/0/88/03b0d39583f48206768a7534e55bcpng.png"></el-avatar>
+							<el-dropdown-menu slot="dropdown">
+								<el-badge :value="12" class="item"><el-dropdown-item v-for="item,key in useradmin">{{item.name}}</el-dropdown-item></el-badge>
+							 </el-dropdown-menu>
+						</el-dropdown>
+					</div>
+				</el-col>  
+			</el-row>
+        </el-header>
+		
+        <el-container>
+				   <el-aside  :span="4" :width="isCollapse ? '60px' : '300px'">
+					   
+					   <el-menu
+							 default-active="2"			
+							 class="el-menu-vertical-demo"
+							 :collapse="isCollapse"
+							 background-color="#32404E"
+							 text-color="#fff"
+							 active-text-color="#ffd04b"
+							 >
+							 <div v-for="item in items" v-if="!item.data">
+								 <el-menu-item :index="item.id" v-on:click="openUrl(item.url)">
+								   <i :class="item.ico"></i>
+								   <span slot="title">{{item.name}}</span>
+								 </el-menu-item>
+							</div>
+							<div v-for="item,key in items" v-if="item.data">
+								<el-submenu :index="item.id">
+								   <template slot="title">
+									 <i :class="item.ico"></i>
+									 <span slot="title">{{item.name}}</span>
+								   </template>
+								   <el-menu-item-group v-for="group in item.data">
+									 <el-menu-item :index="group.id" v-on:click="openUrl(group.dataurl)"><i :class="group.dataico"></i>{{group.dataname}}</el-menu-item>
+								   </el-menu-item-group>
+								</el-submenu>
+							</div>
+						</el-menu> 
+					</el-aside> 
+            <el-main class="mainMain">
+				    <iframe id="mainIframe" class="mainIframe"  v-bind:src="iframeUrl" frameborder="0"></iframe>
+            </el-main>
+        </el-container>
+    </template>           
+</div>
+ 
+ 
+ 
+    </body>
+	<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+	<script src="https://cdn.jsdelivr.net/npm/element-ui@2.13.1/lib/index.js"></script>
+    <script src="js/index.js"></script>
+</html>

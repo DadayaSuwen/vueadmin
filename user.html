@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta name="viewport" content="width=device-width,initial-scale=1.0" />
+        <meta charset="utf-8" />
+        <title>admin</title>
+		<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/element-ui@2.13.1/lib/theme-chalk/index.css">
+       
+    </head>
+    <body>
+        <style>
+			.mainAccountList{
+				line-height: 22px;
+				font-size: 14px;
+			}
+			.mainAccountList .title{
+				font-weight: bold;
+				font-size: 14px;
+			}
+			.mainAccountList .mainTime{
+				font-size: 12px;
+				color:#898989;
+			}
+			.mainAccountList .el-button{
+				padding: 8px 10px;
+				margin-right:40px;
+			}
+			.mainAccountBox{
+				margin-bottom: 20px;
+			}
+			.mainSearch{
+				margin-bottom: 15px;
+				line-height: 40px;
+			}
+			.mainSearch .todayUpdate{
+				font-size: 14px;
+				float: right;
+				text-align: right;
+				color:#a8a8a8;
+			}
+</style>
+<div id="weibolist">
+    <template>
+        <el-container>
+            <el-header height="20px">
+                <el-breadcrumb separator-class="el-icon-arrow-right" >
+                    <el-breadcrumb-item v-for="item in tabs" :to="{ path: '/' }">{{item.name}}</el-breadcrumb-item>
+                </el-breadcrumb>
+            </el-header>
+            <el-main>
+				<el-row >
+					<el-card style="background-color: #F9F9FB; color: #ADAEB0;" shadow="always">
+						  
+							<el-col :span="6"><div style="line-height: 80px;"><el-avatar style="margin-top: 20px; margin-left: 20px;" :size="250" src="https://cube.elemecdn.com/0/88/03b0d39583f48206768a7534e55bcpng.png"></el-avatar></div></el-col>
+							
+							<el-col :span="2"><div style="line-height: 300px;"><i class="el-icon-eleme"></i> <span>修改头像</span></div></el-col>
+							<el-col :span="2"><div style="line-height: 300px;"><i class="el-icon-eleme"></i> <span>修改信息</span></div></el-col>
+							<el-col :span="2"><div style="line-height: 300px;"><i class="el-icon-eleme"></i> <span>修改密码</span></div></el-col>
+						  
+					</el-card>
+				</el-row>
+					<el-row style="background-color: #FFFFFF; font-size: 12px;">
+						<el-card shadow="always">
+						<el-col :span="23" :offset="1"><div style="line-height: 50px;"><span style="color:#9D9FA0 ;">用户名：</span><span>{{user.name}}</span></div></el-col>
+						<el-col :span="23" :offset="1"><div style="line-height: 50px;"><span style="color:#9D9FA0 ;">性别：</span><span>{{user.sex}}</span></div></el-col>
+						<el-col :span="23" :offset="1"><div style="line-height: 50px;"><span style="color:#9D9FA0 ;">年龄：</span><span>{{user.age}}</span></div></el-col>
+						<el-col :span="23" :offset="1"><div style="line-height: 50px;"><span style="color:#9D9FA0 ;">移动电话：</span><span>{{user.phone}}</span></div></el-col>
+						<el-col :span="23" :offset="1"><div style="line-height: 50px;"><span style="color:#9D9FA0 ;">电子邮箱：</span><span>{{user.email}}</span></div></el-col>
+						<el-col :span="23" :offset="1"><div style="line-height: 50px;"><span style="color:#9D9FA0 ;">区域：</span><span>{{user.region}}</span></div></el-col>
+						<el-col :span="23" :offset="1"><div style="line-height: 50px;"><span style="color:#9D9FA0 ;">权限：</span><span>{{user.auth}}</span></div></el-col>
+						<el-col :span="23" :offset="1"><div style="line-height: 50px;"><span style="color:#9D9FA0 ;">注册时间：</span><span>{{user.time}}</span></div></el-col>
+					</el-row>
+				</el-card>
+			</el-main>
+        </el-container>
+    </template>           
+</div>
+    </body>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <!-- 引入组件库 -->
+    <script src="https://cdn.jsdelivr.net/npm/element-ui@2.13.1/lib/index.js"></script>
+    <script src="js/user.js"> 
+
+    </script>
+</html>

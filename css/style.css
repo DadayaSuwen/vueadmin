@@ -1,0 +1,62 @@
+html, body{
+				font-family: "Helvetica Neue",Helvetica,"PingFang SC","Hiragino Sans GB","Microsoft YaHei","微软雅黑",Arial,sans-serif;
+                margin: 0;
+                padding: 0;
+				height: 100%;
+				width: 100%;
+            }
+            #app{
+                position: absolute;
+                top: 0;
+                bottom: 0;
+                left: 0;
+                overflow: hidden;
+                right: 0;
+            }
+            .mainLogo{
+                font-size: 20px;
+                font-weight: bold;
+            }
+            .hg-header{
+                background-color: #32404E;
+            }
+            .el-header{
+                line-height: 60px;
+				padding: 0px;
+                color: #fff;
+            }
+			.el-menu--collapse  .el-submenu__title span{
+			    display: none;
+			}
+			.menu{
+				background-color: #32404E;
+				color: #FFFFFF;
+			}
+			.menu :hover{
+				background-color:#273440;
+			}
+
+            .el-aside{
+                background-color: #22303A;
+            }
+            .el-menu{
+                border-right: none;
+            }
+            .el-container{
+                height:100%;
+            }
+            .mainMain{
+                height:calc(100% - 64px);
+                overflow-y: hidden;
+				background-color: #F5F5F5;
+            }
+            .mainIframe{
+                width:100%;
+                height:100%;
+            }
+            .mainBorad{
+                display: block;
+            }
+            .clearfix{
+                clear: both;
+            }

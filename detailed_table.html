@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta name="viewport" content="width=device-width,initial-scale=1.0" />
+		<meta charset="utf-8" />
+		<title>admin</title>
+		<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/element-ui@2.13.1/lib/theme-chalk/index.css">
+	</head>
+	<body>
+		<style>
+		 .el-table .warning-row {
+		 background: oldlace;
+		 }
+		 .el-table .success-row {
+		 background: #f0f9eb;
+		 }
+		 .cell-edit-color{
+		 color:#2db7f5;
+		 font-weight: bold;
+		 }
+		 .cell-edit-input .el-input, .el-input__inner {
+		 width:100px;
+		 }
+		 .cell-icon{
+		 cursor:pointer;
+		 color:#fff;
+		 }
+		</style>
+		<div id="weibolist">
+			<template>
+				<el-container>
+					<el-header height="20px">
+						<el-breadcrumb separator-class="el-icon-arrow-right">
+							<el-breadcrumb-item v-for="item in tabs" :to="{ path: '/' }">{{item.name}}</el-breadcrumb-item>
+						</el-breadcrumb>
+					</el-header>
+					<el-main>
+							<div style="text-align:left">
+<!-- 							  <el-input v-model="tableDataName" size="small" placeholder="请输入姓名" style="width:240px"></el-input>
+							  <el-button type="primary" size="small" @click="searchUser">搜索</el-button>
+							  <el-button type="primary" size="small" @click="openData">展示数据</el-button> -->
+							  <el-button type="success" size="small" @click="addRow(users)">新增</el-button>
+							  <!-- <el-button type="success" size="small" @click="handleAdd()">新增</el-button> -->
+							  <!-- <el-button type="primary" size="small" @click="removeUsers()">批量删除</el-button> -->
+							</div>
+							<!-- @selection-change="selsChange" -->
+						    <div class="table">
+						      <el-table :data="users" highlight-current-row v-loading="listLoading"  style="width: 100%;">
+						                <el-table-column type="index" label="id" width="60">
+						                </el-table-column>
+						                <el-table-column prop="name"  label="商品名称" width="120" sortable>
+						                </el-table-column>
+						                <el-table-column prop="price" label="价格" width="100" sortable>
+						                </el-table-column>
+						                <el-table-column prop="reserve" label="商品库存" min-width="120" sortable>
+						                </el-table-column>
+						                <el-table-column prop="data" label="日期" min-width="120" sortable>
+						                </el-table-column>
+						                <el-table-column prop="desc" label="商品描述" min-width="180" sortable>
+						                </el-table-column>
+						                <el-table-column label="操作" width="300">
+						                  <template slot-scope="scope">
+						                    <!-- <el-button type="success" size="small" @click="handleEdit(scope.$index, scope.row)">新增</el-button> -->
+						                    <el-button type="primary" size="small" @click="handleEdit(scope.$index, scope.row)">编辑</el-button>
+						                    <el-button size="small" type="danger" @click="handleDelete(scope.$index, users)">删除</el-button>
+						                  </template>
+						                </el-table-column>
+						            </el-table> 
+						    </div>
+						  </div>
+							<el-dialog :title="titleMap[dialogStatus]" :visible.sync="FormVisible" :modal="false" :close-on-click-modal="false" class="edit-form"
+							    :before-close="handleClose">
+							      <el-form :model="Form" label-width="80px" :rules="editFormRules" ref="Form">
+							          <el-form-item label="商品名称" prop="name">
+							            <el-input v-model="Form.name" auto-complete="off"></el-input>
+							          </el-form-item>
+							          <el-form-item label="商品价格">
+										<el-input
+										  oninput="if(isNaN(value)) { value = null } if(value.indexOf('.')>0){value=value.slice(0,value.indexOf('.')+3)}"
+										  maxLength="9"
+										  placeholder="请输入价格"
+										  v-model="Form.price">
+										</el-input>
+							          </el-form-item>
+							          <el-form-item label="商品库存">
+							            <el-input v-model="Form.reserve"></el-input>
+							          </el-form-item>
+							          <el-form-item label="选择日期" :picker-options="pickerOptions">
+							            <div>
+							                <el-date-picker v-model="Form.data" type="date" placeholder="选择日期" format="yyyy 年 MM 月 dd 日"
+							            value-format="yyyy-MM-dd"></el-date-picker>
+							            </div>
+							          </el-form-item>
+							          <el-form-item label="商品描述">
+							            <el-input type="textarea" v-model="Form.desc"></el-input>
+							          </el-form-item>         
+							        </el-form>
+							        <div slot="footer"  class="dialog-footer">
+							          <el-button @click.native="handleCancel('Form')">取消</el-button>
+							          <el-button v-if="addBtnshow" type="primary" @click.native="confirmAdd('Form')">确定</el-button>
+							          <el-button v-if="editBtnshow" type="primary" @click.native="confirmEdit('Form')">确定</el-button>
+							        </div>
+							      </el-dialog>      
+					</el-main>
+				</el-container>
+			</template>
+		</div>
+	</body>
+	<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+	<!-- 引入组件库 -->
+	<script src="https://cdn.jsdelivr.net/npm/element-ui@2.13.1/lib/index.js"></script>
+	<script src="js/detailed.js">
+		
+	</script>
+</html>
+	

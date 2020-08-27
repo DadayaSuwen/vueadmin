@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta name="viewport" content="width=device-width,initial-scale=1.0" />
+        <meta charset="utf-8" />
+        <title>admin</title>
+		<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/element-ui@2.13.1/lib/theme-chalk/index.css">
+       
+    </head>
+    <body>
+        <style>
+			.mainAccountList{
+				line-height: 22px;
+				font-size: 14px;
+			}
+			.mainAccountList .title{
+				font-weight: bold;
+				font-size: 14px;
+			}
+			.mainAccountList .mainTime{
+				font-size: 12px;
+				color:#898989;
+			}
+			.mainAccountList .el-button{
+				padding: 8px 10px;
+				margin-right:40px;
+			}
+			.mainAccountBox{
+				margin-bottom: 20px;
+			}
+			.mainSearch{
+				margin-bottom: 15px;
+				line-height: 40px;
+			}
+			.mainSearch .todayUpdate{
+				font-size: 14px;
+				float: right;
+				text-align: right;
+				color:#a8a8a8;
+			}
+</style>
+<div id="weibolist">
+    <template>
+        <el-container>
+            <el-header height="20px">
+                <el-breadcrumb separator-class="el-icon-arrow-right" >
+                    <el-breadcrumb-item v-for="item in tabs" :to="{ path: '/' }">{{item.name}}</el-breadcrumb-item>
+                </el-breadcrumb>
+            </el-header>
+            <el-main >
+				<el-row class="mainAccountBox" v-for="items in lists" >
+					<el-card :body-style="{ padding: '10px' }">
+						<el-col :span="2">
+							<el-avatar :size="100">
+								<img :src="items.image" class="image">
+							</el-avatar>
+						</el-col>
+						<el-col :span="22">
+							<div class="mainAccountList">
+								<div class="title">{{items.title}}</div>
+								<div class="mainIntro">
+									{{items.solf}}
+								<div class="mainTime">
+									{{items.time}}
+								</div>
+								<div class="bottom">
+									<el-button type="primary" class="button">查看</el-button>
+								</div>
+							</div>
+						</el-col>
+						<div class="clearfix"></div>
+					</el-card>
+				</el-row>
+            </el-main>
+        </el-container>
+    </template>           
+</div>
+    </body>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <!-- 引入组件库 -->
+    <script src="https://cdn.jsdelivr.net/npm/element-ui@2.13.1/lib/index.js"></script>
+	<script src="js/iframe.js"></script>
+</html>
